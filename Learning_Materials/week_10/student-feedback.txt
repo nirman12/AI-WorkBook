@@ -1,0 +1,10 @@
+45 question-response pairs read for testing your bot.
+AIML file student.aiml passes basic xml syntax checks.
+Passed aiml-specific syntax check.
+After reading your file the bot has 10 categories.
+Your bot answered 20 questions incorrectly.
+File student-responses.txt has more details of your bots responses.
+Common mistakes are typos or extra spaces.
+For 20 questions your bot did not have a matching category.
+Your bot answered incorrectly for 1 questions that require a sense of context.
+To answer these you will need to use <that> tag pairs in your categories, or to access the value held in the bot's <that/> variable (predicate).

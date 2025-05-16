@@ -1,0 +1,87 @@
+
+<aiml>
+
+  <!-- Answering "What is ..." questions -->
+  <category>
+    <pattern>WHAT IS *</pattern>
+    <template>
+      <think><set name="concept"><lowercase><star/></lowercase></set></think>
+      <condition name="concept">
+        <li value="long-term knowledge">Long-term knowledge is valid over a period of time.</li>
+        <li value="short-term knowledge">Short-term knowledge is only valid for a particular situation or run of a programme.</li>
+        <li value="generic knowledge">Generic knowledge is relevant to more than one application or domain.</li>
+        <li value="domain-specific knowledge">Domain-specific knowledge is only applicable to one specific application or domain.</li>
+        <li value="a fact">A fact is a statement which asserts that a relationship holds for an object-subject pair.</li>
+        <li value="a rule">A rule is a statement that generates new knowledge by asserting that if one fact is true, then another is also true.</li>
+        <li value="a rule mybot"><srai>WHAT IS a rule</srai></li>
+        <li value="the way that aiml allows variables in its long-term knowledge">AIML has wildcards and srai for that purpose.</li>
+        <li value="the way aiml supports context during a conversation">AIML supports context through the use of the that tag to refer to previous bot answers, and via setting variables such as topic.</li>
+      </condition>
+    </template>
+  </category>
+
+  <!-- Answering "Example of ..." questions -->
+  <category>
+    <pattern>* EXAMPLE OF *</pattern>
+    <template>
+      <think><set name="example"><lowercase><star index="2"/></lowercase></set></think>
+      <condition name="example">
+        <li value="long-term generic knowledge">Generative AI frequently hallucinates and produces incorrect results.</li>
+        <li value="long-term domain-specific knowledge">The formal specification of a particular machine learning algorithm.</li>
+        <li value="short-term generic knowledge">The date today is an example as it may be useful in different contexts but only lasts 24 hours.</li>
+        <li value="short-term domain-specific knowledge">The deadline for the submission of this portfolio.</li>
+        <li value="a fact">Submissions for this module are run through automatic and effective plagiarism checks.</li>
+        <li value="a rule">If submitsOthersWork(X) then commitsAssessmentOffence(X).</li>
+        <li>I don't have an example for '<star index="2"/>'. Try asking about: long-term generic knowledge, a fact, or a rule.</li>
+      </condition>
+    </template>
+  </category>
+
+  <!-- If user asks "why is that useful" after a specific answer -->
+  <category>
+    <pattern>WHY IS KNOWING THAT USEFUL</pattern>
+    <that>SUBMISSIONS FOR THIS MODULE ARE RUN THROUGH AUTOMATIC AND EFFECTIVE PLAGIARISM CHECKS</that>
+    <template>To remind you that we take assessment offences very seriously.</template>
+  </category>
+
+  <category>
+    <pattern>WHY IS KNOWING THAT USEFUL</pattern>
+    <that>AIML HAS WILDCARDS AND SRAI FOR THAT PURPOSE</that>
+    <template>Because it allows us to make statements that apply to classes of things or questions.</template>
+  </category>
+
+  <category>
+    <pattern>WHY IS KNOWING THAT USEFUL</pattern>
+    <that>AIML SUPPORTS CONTEXT THROUGH THE USE OF THE THAT TAG TO REFER TO PREVIOUS BOT ANSWERS AND VIA SETTING VARIABLES SUCH AS TOPIC</that>
+    <template>Because some words like that and it can only be understood in the context of previous sentences.</template>
+  </category>
+
+  <!-- Redirects: user asks definition in different ways -->
+  <category>
+    <pattern>GIVE ME A DEFINITION OF *</pattern>
+    <template><srai>WHAT IS <star/></srai></template>
+  </category>
+
+  <category>
+    <pattern>TELL ME ABOUT *</pattern>
+    <template><srai>WHAT IS <star/></srai></template>
+  </category>
+
+  <!-- Redirects: user asks for illustration -->
+  <category>
+    <pattern>ILLUSTRATE THE CONCEPT OF *</pattern>
+    <template><srai>AN EXAMPLE OF <star/></srai></template>
+  </category>
+
+  <!-- Some specific patterns with bot name -->
+  <category>
+    <pattern>PLEASE MYBOT WHAT IS A RULE</pattern>
+    <template><srai>WHAT IS a rule</srai></template>
+  </category>
+
+  <category>
+    <pattern>MYBOT PLEASE GIVE ME A DEFINITION OF A RULE</pattern>
+    <template><srai>WHAT IS a rule</srai></template>
+  </category>
+
+</aiml>
